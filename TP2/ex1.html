@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice 1 - Connexion</title>
+    <style>
+        /* Un peu de CSS pour imiter le style bleu de l'image */
+        table.login-table {
+            border-collapse: collapse;
+            background-color: #ADD8E6; /* Bleu clair */
+            border: 2px solid #5F9EA0;
+        }
+        table.login-table th, table.login-table td {
+            border: 1px solid #ffffff;
+            padding: 5px;
+        }
+        .header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .btn-container {
+            text-align: center;
+        }
+        button {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 10px;
+        }
+        button img {
+            margin-left: 5px;
+            width: 16px;
+            height: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<form action="https://www.cafe-it.fr/cytech/post.php" method="post">
+    <table class="login-table">
+        <tr>
+            <td colspan="2" class="header">Sign In</td>
+        </tr>
+        <tr>
+            <td><label for="email">Email:</label></td>
+            <td><input type="email" id="email" name="email"></td>
+        </tr>
+        <tr>
+            <td><label for="pwd">Mot de passe:</label></td>
+            <td><input type="password" id="pwd" name="password"></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="btn-container">
+                <button type="submit">
+                    Sing In <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/1200px-Flat_tick_icon.svg.png" alt="Valider">
+                </button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

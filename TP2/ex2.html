@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercice 2 - Inscription</title>
+  <style>
+    table.register-table {
+      border: 1px solid #000;
+      background-color: #FFFFE0; /* Jaune clair */
+      border-collapse: collapse;
+      width: 400px;
+    }
+    table.register-table td, table.register-table th {
+      border: 1px solid #999;
+      padding: 5px;
+    }
+    .title {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .center-btn {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<form action="https://www.cafe-it.fr/cytech/post.php" method="post" enctype="multipart/form-data">
+  <table class="register-table">
+    <tr>
+      <td colspan="2" class="title">Formulaire d'inscription</td>
+    </tr>
+    <tr>
+      <td><label for="nom">Nom :</label></td>
+      <td><input type="text" id="nom" name="nom"></td>
+    </tr>
+    <tr>
+      <td><label for="prenom">Prénom :</label></td>
+      <td><input type="text" id="prenom" name="prenom"></td>
+    </tr>
+    <tr>
+      <td><label for="num_etud">Numéro étudiant :</label></td>
+      <td><input type="text" id="num_etud" name="num_etud"></td>
+    </tr>
+    <tr>
+      <td><label for="groupe">Groupe :</label></td>
+      <td>
+        <select id="groupe" name="groupe">
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="photo">Photo :</label></td>
+      <td><input type="file" id="photo" name="photo" accept="image/*"></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="center-btn">
+        <button type="submit">S'inscrire &#x2705;</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>

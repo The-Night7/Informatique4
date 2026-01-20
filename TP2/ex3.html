@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercice 3 - Formulaire Complet</title>
+</head>
+<body>
+
+<form action="https://www.cafe-it.fr/cytech/post.php" method="post">
+  <fieldset>
+    <legend>Formulaire</legend>
+
+    <p>
+      <label for="prenom">Prénom :</label>
+      <input type="text" id="prenom" name="prenom" maxlength="50" required>
+    </p>
+
+    <p>
+      <label for="nom">Nom :</label>
+      <input type="text" id="nom" name="nom" maxlength="50" required>
+    </p>
+
+    <p>
+      <label for="email1">E-mail :</label>
+      <input type="email" id="email1" name="email1">
+    </p>
+
+    <p>
+      <label for="email2">E-mail :</label>
+      <input type="email" id="email2" name="email2">
+    </p>
+
+    <p>
+      <label for="age">Age :</label>
+      <input type="number" id="age" name="age" min="18" max="125" style="width: 50px;">
+    </p>
+
+    <p>
+      Genre :
+      <input type="radio" id="homme" name="genre" value="homme"> <label for="homme">Homme</label>
+      <input type="radio" id="femme" name="genre" value="femme"> <label for="femme">Femme</label>
+      <input type="radio" id="autre" name="genre" value="autre"> <label for="autre">Autre</label>
+    </p>
+
+    <p>
+      Plan :
+      <input type="checkbox" id="basic" name="plan[]" value="basic"> <label for="basic">Basic</label>
+      <input type="checkbox" id="premium" name="plan[]" value="premium" checked> <label for="premium">Premium</label>
+      <input type="checkbox" id="titanium" name="plan[]" value="titanium"> <label for="titanium">Titanium</label>
+    </p>
+
+    <p>
+      <label for="loisirs">Loisirs :</label><br>
+      <select id="loisirs" name="loisirs[]" multiple size="3">
+        <option value="sport">Sport</option>
+        <option value="lecture">Lecture</option>
+        <option value="photographie">Photographie</option>
+        <option value="jardinage">Jardinage</option>
+        <option value="musique">Musique</option>
+      </select>
+    </p>
+
+    <p>
+      Taille de chemise :
+      <input type="radio" id="s" name="taille" value="S"> <label for="s">Small</label>
+      <input type="radio" id="m" name="taille" value="M"> <label for="m">Medium</label>
+      <input type="radio" id="l" name="taille" value="L"> <label for="l">Large</label>
+    </p>
+
+    <p>
+      <label for="tel">Téléphone :</label>
+      <input type="tel" id="tel" name="telephone">
+    </p>
+
+    <p>
+      <label for="couleur">Couleur :</label>
+      <input type="color" id="couleur" name="couleur" value="#000000">
+    </p>
+
+    <p>
+      <label for="commentaires">Commentaires :</label><br>
+      <textarea id="commentaires" name="commentaires" rows="4" cols="50" placeholder="Entrer vos commentaires..."></textarea>
+    </p>
+
+    <p>
+      <input type="submit" value="Envoyer">
+      <input type="reset" value="Reset">
+    </p>
+
+  </fieldset>
+</form>
+
+</body>
+</html>
