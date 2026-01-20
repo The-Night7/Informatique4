@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Punaiiiiiiiiiise</title>
+    <style>
+        /* Style pour agrandir le tableau */
+        table {
+            width: 90%; /* Largeur du tableau en pourcentage de la page */
+            margin: 20px auto; /* Centre le tableau horizontalement */
+            font-size: 18px; /* Augmente la taille de la police */
+            border-collapse: collapse; /* Fusionne les bordures adjacentes */
+        }
+
+        /* Style des cellules */
+        th, td {
+            padding: 15px; /* Augmente l'espacement interne */
+            border: 2px solid black; /* Bordure plus visible */
+            text-align: center; /* Centre le texte */
+            height: 50px; /* Hauteur minimale des cellules */
+        }
+
+        /* Style des en-têtes */
+        th {
+            font-size: 20px; /* Taille de police plus grande pour les en-têtes */
+            font-weight: bold;
+            background-color: #f2f2f2;
+        }
+
+        /* Classes de couleurs existantes */
+        .orange-bg {
+            background-color: orange;
+        }
+        .red-bg {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<table>
+  <tr>
+    <th></th>
+    <th>Lundi</th>
+    <th>Mardi</th>
+    <th>Mercredi</th>
+    <th>Jeudi</th>
+    <th>Vendredi</th>
+    <th>Total</th>
+  </tr>
+  <tr>
+    <td>Selles</td>
+    <td colspan="3">5</td> <!-- Fusion 1-->
+    <td colspan="2" rowspan="2">(quota atteint)</td> <!-- Fusion 2-->
+    <td>15</td>
+  </tr>
+  <tr>
+    <td>Roulant</td>
+    <td colspan="3" class="orange-bg">(hors matériel)</td> <!-- Fusion 3 + fond orange-->
+    <!-- Pas besoin de cellules ici car elles sont fusionnées avec la ligne du dessus -->
+    <td class="red-bg">25</td> <!-- Fond rouge-->
+  </tr>
+  <tr>
+    <td>Jambe standard</td>
+    <td>4</td>
+    <td>8</td>
+    <td>12</td>
+    <td>4</td>
+    <td></td>
+    <td>28</td>
+  </tr>
+</table>
+</body>
+</html>
