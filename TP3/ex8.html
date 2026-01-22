@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Ex8</title>
+    <link rel="stylesheet" href="ex8.css">
+</head>
+<body>
+<form action="page1.php" enctype="multipart/form-data" method="post">
+    <table border="1">
+        <tr>
+            <th colspan="2">Inscription en classe</th>
+        </tr>
+        <tr>
+            <td>Nom:</td>
+            <td><input type="text" name="nom"></td>
+        </tr>
+        <tr>
+            <td>Numéro d'étudiant</td>
+            <td><input type="text" name="num"></td>
+        </tr>
+        <tr>
+            <td>votre groupe ?</td>
+            <td>
+                <select name="groupe">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>votre photo</td>
+            <td><input type="file" accept="image/*" name="file1"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <button type="submit">
+                    S'inscrire
+                    <img src="index.jpg" width="25" height="15" alt="">
+                </button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

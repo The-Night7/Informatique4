@@ -1,0 +1,71 @@
+/* Mise en page générale */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+}
+
+#conteneur{
+    width: 95%;
+    margin: 20px auto;
+}
+
+/* Fieldset + légende (comme l'image) */
+fieldset{
+    border: 3px solid red;
+    border-radius: 12px;
+    padding: 18px 24px 22px;
+    background: #fff;
+}
+
+legend{
+    background: #d9d9d9;
+    border: 1px solid #bdbdbd;
+    padding: 4px 10px;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Aligner div1 (label) et div2 (champ) sur la même ligne */
+.div1, .div2{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.div1{
+    width: 90px;              /* colonne des libellés */
+    margin-left: 25px;
+    color: #333;
+    font-size: 12px;
+}
+
+.div2{
+    width: 220px;             /* colonne des inputs */
+}
+
+/* Style des champs */
+.champ{
+    width: 80px;              /* inputs courts comme sur l'image */
+    height: 18px;
+    border: 1px solid #cfcfcf;
+    background: #fff;
+    font-size: 12px;
+    padding: 1px 4px;
+}
+
+/* Bouton */
+input[type="submit"].champ{
+    width: 80px;
+    height: 20px;
+    background: #f07a00;      /* orange */
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 0;           /* on centre via .div2 ci-dessous */
+}
+
+/* Centrer le bouton sur la ligne */
+fieldset .div2:last-of-type{
+    text-align: center;
+}

@@ -1,0 +1,37 @@
+table{
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+/* e) légende */
+caption{
+    font-size: 32px;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+/* c) première ligne */
+table tr:first-child td{
+    font-size: 32px;
+    font-weight: 700;
+}
+
+/* d) première colonne */
+table td:first-child{
+    font-size: 32px;
+    font-style: italic;
+}
+
+/* b) cellules non fusionnées (par défaut) */
+table td{
+    background: yellow;
+    padding: 10px;
+}
+
+/* a) cellules fusionnées : celles qui ont colspan ou rowspan */
+table td[colspan],
+table td[rowspan]{
+    background: red;
+    color: white;
+    font-weight: 700;
+}
