@@ -1,0 +1,67 @@
+/* Style pour le tableau */
+table {
+    width: 95%;
+    margin-left: 25px;
+    margin-right: 25px;
+    border-collapse: collapse;
+    border: 0.5px solid black;
+}
+
+/* Bordures du tableau */
+table {
+    border-top: solid red;
+    border-bottom: double blue;
+    border-right: solid black;
+    border-left: solid black;
+}
+
+/* Style pour les cellules d'entête */
+th {
+    background-color: brown;
+    color: white;
+    font-weight: bold;
+    font-size: 48px;
+    text-align: center;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    text-transform: capitalize;
+    border: 1px solid black;
+}
+
+/* Style pour les cellules du corps */
+td {
+    background-color: lightgreen;
+    padding: 8px;
+}
+
+/* Style pour les cellules impaires (1ère et 3ème colonne) */
+tr td:nth-child(odd) {
+    border: dotted blue;
+}
+
+/* Style pour les cellules paires (2ème colonne) */
+tr td:nth-child(even) {
+    border: solid red;
+}
+
+/* Style pour le texte des lignes paires (2ème, 4ème, 6ème ligne) */
+tr:nth-child(odd) td {
+    text-align: right;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+    font-size: 32px;
+    word-spacing: 32px;
+}
+
+/* Style pour la première colonne */
+td:first-child {
+    text-transform: uppercase;
+    text-align: right;
+}
+
+/* Style pour les lignes impaires (1ère, 3ème, 5ème ligne) */
+tr:nth-child(odd) td {
+    font-size: 24px;
+    font-style: italic;
+}

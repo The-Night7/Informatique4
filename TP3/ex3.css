@@ -1,0 +1,62 @@
+body {
+    font-family: Times New Roman, serif;
+    margin: 20px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+ol {
+    counter-reset: item;
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+/* Premier niveau - chiffres romains (I, II) */
+ol>li {
+    counter-increment: item;
+    margin-bottom: 5px;
+}
+
+ol>li::before {
+    content: counter(item, upper-roman) ". ";
+    font-weight: bold;
+}
+
+/* Deuxième niveau - lettres majuscules (A, B) */
+ol>li>ol>li {
+    counter-increment: subitem;
+    margin-left: 20px;
+}
+
+ol>li>ol {
+    counter-reset: subitem;
+}
+
+ol>li>ol>li::before {
+    content: counter(subitem, upper-alpha) ". ";
+    font-weight: bold;
+}
+
+/* Troisième niveau - chiffres arabes (1, 2) */
+ol>li>ol>li>ol>li {
+    counter-increment: subsubitem;
+    margin-left: 20px;
+}
+
+ol>li>ol>li>ol {
+    counter-reset: subsubitem;
+}
+
+ol>li>ol>li>ol>li::before {
+    content: counter(subsubitem) ". ";
+    font-weight: normal;
+}
+
+/* Supprime les puces par défaut */
+li {
+    list-style-type: none;
+}

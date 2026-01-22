@@ -1,0 +1,49 @@
+/* 1. Tous les éléments <p> avec la classe "pars" placés dans un <div> avec la classe "divs" */
+div.divs p.pars {
+    color: red;
+}
+
+/* 2. Tous les éléments <abbr> qui ont un attribut title */
+abbr[title] {
+    text-decoration: underline;
+}
+
+/* 3. Tous les éléments avec un attribut width égal à 300 */
+[width="300"] {
+    border: 1px solid blue;
+}
+
+/* 4. Tous les éléments <a> avec un attribut href à l'intérieur d'un <nav> avec la classe "nav1" */
+nav.nav1 a[href] {
+    font-weight: bold;
+}
+
+/* 5. Tous les éléments <p> qui sont des enfants directs d'un <div> avec la classe "divs" */
+div.divs > p {
+    margin-left: 20px;
+}
+
+/* 6. Tous les éléments <img> avec la classe "images" placés dans un <p> avec l'id "id1" */
+p#id1 img.images {
+    border-radius: 10px;
+}
+
+/* 7. Tous les éléments <img> qui sont des enfants de numéro impair de n'importe quel élément */
+img:nth-child(odd) {
+    opacity: 0.8;
+}
+
+/* 8. Tous les éléments <img> avec un src se terminant par .jpg */
+img[src$=".jpg"] {
+    box-shadow: 2px 2px 5px gray;
+}
+
+/* 9. Les éléments <div> avec la classe "div2" qui sont les premiers frères après un <div> avec la classe "div1" */
+div.div1 + div.div2 {
+    background-color: yellow;
+}
+
+/* 10. Toutes les lignes paires dans un corps de tableau */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

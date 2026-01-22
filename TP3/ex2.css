@@ -1,0 +1,28 @@
+/*
+Réponses pour l'exercice 2:
+
+1. body{color: red}
+   Lignes modifiées: Toutes les lignes à l'intérieur du body (lignes 34-48)
+
+2. div#div1> p{color:red}
+   Lignes modifiées: 38, 39 (les paragraphes qui sont enfants directs de div#div1)
+
+3. div#div1> a{color:red}
+   Lignes modifiées: 40 (le lien qui est enfant direct de div#div1)
+
+4. div>a{color:red}
+   Lignes modifiées: Aucune (il n'y a pas de lien qui soit enfant direct d'une div)
+   Note: Le lien à la ligne 40 est enfant direct de div#div1, pas de la div extérieure
+
+5. [type]{color:red}
+   Lignes modifiées: 44, 45, 46, 47, 48 (tous les éléments avec un attribut type)
+
+6. form.form1{background-color:red}
+   Lignes modifiées: Aucune (le formulaire a un id="form1", pas une classe .form1)
+
+7. form>input:nth-child(2n) {background-color:red}
+   Lignes modifiées: 45, 47 (les inputs pairs qui sont enfants directs du form)
+
+8. input:nth-child(2n+1) {background-color:red}
+   Lignes modifiées: 44, 46 (tous les inputs impairs)
+*/
