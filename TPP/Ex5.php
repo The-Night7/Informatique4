@@ -10,6 +10,7 @@
 $prenom1 = isset($_REQUEST['prenom1']) ? htmlspecialchars($_REQUEST['prenom1']) : '';
 $prenom2 = isset($_REQUEST['prenom2']) ? htmlspecialchars($_REQUEST['prenom2']) : '';
 $message = "";
+$couleur = isset($_REQUEST["couleur"]) ? htmlspecialchars($_REQUEST["couleur"]) : '#f0f0f0';
 
 // Traitement du formulaire
 if (!empty($prenom1) || !empty($prenom2)) {
@@ -29,7 +30,7 @@ if (!empty($prenom1) || !empty($prenom2)) {
     <meta charset="UTF-8">
     <title>Exercice 5 : PHP-FPM</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; }
+        body { font-family: sans-serif; padding: 20px; background-color: <?= $couleur ?>; }
         .resultat { background-color: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
         form { background-color: #f8f9fa; padding: 20px; border-radius: 5px; border: 1px solid #ddd; }
         input { padding: 5px; margin: 5px 0; }
