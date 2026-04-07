@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Create a table</title>
+    <style type="text/css">
+        table { background-color: lightyellow; margin-bottom: 20px; }
+        body { font-family: Arial, sans-serif; padding: 20px; }
+    </style>
+</head>
+<body>
+    <form id="form1">
+        <table id="myTable" border="2">
+            <tr>
+                <td>PreNom1: <input type="text"></td>
+                <td>Nom1: <input type="text"></td>
+            </tr>
+        </table>
+        
+        <input type="button" onclick="addRow()" value="Add Row">
+        <input type="button" onclick="deleteRow()" value="delete row">
+        <input type="button" onclick="deleteAll()" value="delete all">
+        <input type="button" onclick="addRows()" value="Add rows">
+    </form>
+
+    <script>
+        // On garde une trace du nombre de lignes créées pour numéroter correctement
+        let compteur = 1;
+
+        function addRow() {
+            compteur++;
+            let table = document.getElementById("myTable");
+            let newRow = table.insertRow(-1); // Ajoute à la fin
+            
+            let cell1 = newRow.insertCell(0);
+            let cell2 = newRow.insertCell(1);
+            
+            cell1.innerHTML = 'PreNom' + compteur + ': <input type="text">';
+            cell2.innerHTML = 'Nom' + compteur + ': <input type="text">';
+        }
+
+        function deleteRow() {
+            let table = document.getElementById("myTable");
+            let rowCount = table.rows.length;
+            
+            if (rowCount > 0) {
+                table.deleteRow(rowCount - 1); // Supprime la dernière ligne
+                compteur--;
+                if(compteur < 0) compteur = 0;
+            } else {
+                alert("Le tableau est déjà vide !");
+            }
+        }
+
+        function deleteAll() {
+            // Demande confirmation avant de tout effacer
+            if(confirm("Êtes-vous sûr de vouloir supprimer tous les éléments de la page ?")) {
+                document.body.innerHTML = "<h1>Tout le contenu a été supprimé.</h1><p>Rechargez la page (F5) pour recommencer.</p>";
+            }
+        }
+
+        function addRows() {
+            let nombreLignes = parseInt(prompt("Combien de lignes voulez-vous ajouter ?", "2"));
+            
+            if (!isNaN(nombreLignes) && nombreLignes > 0) {
+                for (let i = 0; i < nombreLignes; i++) {
+                    addRow();
+                }
+            } else {
+                alert("Veuillez entrer un nombre valide supérieur à 0.");
+            }
+        }
+    </script>
+</body>
+</html>

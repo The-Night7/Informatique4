@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP 5 - Exercice 3 : Background et Temps</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; transition: background-color 0.5s; }
+        .controls { background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 8px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <h1>Exercice 3 : Arrière-plan</h1>
+        
+        <p>Choisissez une couleur :</p>
+        <label><input type="radio" name="color" value="red" onclick="changerCouleur(this.value)"> Rouge</label><br>
+        <label><input type="radio" name="color" value="green" onclick="changerCouleur(this.value)"> Vert</label><br>
+        <label><input type="radio" name="color" value="blue" onclick="changerCouleur(this.value)"> Bleu</label><br>
+        <label><input type="radio" name="color" value="lightyellow" onclick="changerCouleur(this.value)"> Jaune clair</label><br><br>
+
+        <button onclick="calculerTemps()">Calculer le temps écoulé</button>
+        <p id="resultat-temps" style="font-weight: bold;"></p>
+    </div>
+
+    <script>
+        let dateChangement = null;
+
+        function changerCouleur(couleur) {
+            document.body.style.backgroundColor = couleur;
+            dateChangement = new Date(); // Enregistre le moment exact du changement
+            document.getElementById("resultat-temps").innerText = ""; 
+        }
+
+        function calculerTemps() {
+            if (!dateChangement) {
+                document.getElementById("resultat-temps").innerText = "Veuillez d'abord changer la couleur.";
+                return;
+            }
+            
+            let dateActuelle = new Date();
+            let tempsEcouleMs = dateActuelle - dateChangement; // Temps en millisecondes
+            let tempsEcouleSec = Math.floor(tempsEcouleMs / 1000);
+            
+            document.getElementById("resultat-temps").innerText = 
+                "Temps écoulé depuis le dernier changement : " + tempsEcouleSec + " seconde(s).";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP 5 - Exercice 1 : Chaînes de caractères</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
+        .resultat { background: #f4f4f9; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Exercice 1 : Manipulation de chaînes</h1>
+    
+    <div class="resultat">
+        <h3>1. Test de min_majv1 :</h3>
+        <script>
+            function min_majv1(str1) {
+                return str1.toLowerCase().split(' ').map(mot => 
+                    mot.charAt(0).toUpperCase() + mot.substring(1)
+                ).join(' ');
+            }
+            document.write(min_majv1("WELCome pRenOm NoM "));
+        </script>
+    </div>
+
+    <div class="resultat">
+        <h3>2. Test de min_majv2 :</h3>
+        <script>
+            function min_majv2(str1) {
+                return str1.split('').map(char => {
+                    if (char === char.toUpperCase()) return char.toLowerCase();
+                    if (char === char.toLowerCase()) return char.toUpperCase();
+                    return char;
+                }).join('');
+            }
+            document.write(min_majv2("WELCome pRenOm NoM "));
+        </script>
+    </div>
+
+    <div class="resultat">
+        <h3>3. Test de freqvoyelles :</h3>
+        <script>
+            function freqvoyelles(str1) {
+                let strLower = str1.toLowerCase();
+                let compte = { 'a': 0, 'e': 0, 'i': 0, 'o': 0, 'u': 0, 'y': 0 }; // 'Y' devient 'y'
+                
+                for (let i = 0; i < strLower.length; i++) {
+                    let char = strLower[i];
+                    if (compte[char] !== undefined) {
+                        compte[char]++;
+                    }
+                }
+                // Pour correspondre exactement à l'affichage demandé dans l'énoncé :
+                return { 'a': compte['a'], 'o': compte['o'], 'e': compte['e'], 'i': compte['i'], 'u': compte['u'], 'Y': compte['y'] };
+            }
+
+            var voyelles = freqvoyelles("AAEEee iiIIAA YY UY Naya");
+            for(var lettr in voyelles) {
+                var value = voyelles[lettr];
+                document.write(lettr + " = " + value + '<br>');
+            }
+        </script>
+    </div>
+</body>
+</html>

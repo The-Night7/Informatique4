@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP 5 - Exercice 2 : DOM et Formulaire</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .form-container { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Exercice 2 : Hide / Show</h1>
+
+    <div class="form-container">
+        Number 1 <input type="number" id="num1"><br><br>
+        <input type="radio" name="operation" value="PGCD"> PGCD<br>
+        <input type="radio" name="operation" value="PPCM"> PPCM<br><br>
+        Number 2 <input type="number" id="num2"><br><br>
+    </div>
+
+    <input type="button" value="hide" onclick="hideInputs()">
+    <input type="button" value="show" onclick="showInputs()">
+
+    <script>
+        function hideInputs() {
+            // Sélectionne tous les inputs qui ne sont pas de type bouton
+            let inputs = document.querySelectorAll('input:not([type="button"])');
+            inputs.forEach(input => {
+                input.style.visibility = 'hidden';
+            });
+        }
+
+        function showInputs() {
+            // Sélectionne tous les inputs
+            let inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.style.visibility = 'visible';
+            });
+        }
+    </script>
+</body>
+</html>
