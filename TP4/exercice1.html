@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 4 - Exercice 1 : Conditions et boucles</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; }
+        section { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
+        h1, h2 { color: #2c3e50; }
+        input { padding: 8px; margin: 5px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 8px 15px; background-color: #2980b9; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #1a5276; }
+        .resultat { font-weight: bold; color: #27ae60; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Exercice 1</h1>
+        
+        <h2>1. Signe du produit</h2>
+        <input type="number" id="num1" placeholder="Nombre 1">
+        <input type="number" id="num2" placeholder="Nombre 2">
+        <button onclick="verifierSigne()">Vérifier</button>
+        <div id="res-signe" class="resultat"></div>
+
+        <hr>
+
+        <h2>2. Fonctions arithmétiques</h2>
+        <input type="number" id="valA" placeholder="Entier A" min="0">
+        <input type="number" id="valB" placeholder="Entier B" min="0">
+        <br><br>
+        <button onclick="afficherResultat('multiplication')">Multiplier</button>
+        <button onclick="afficherResultat('division')">Diviser</button>
+        <button onclick="afficherResultat('puissance')">Puissance</button>
+        <div id="res-arith" class="resultat"></div>
+    </section>
+
+    <script>
+        function verifierSigne() {
+            let n1 = parseFloat(document.getElementById("num1").value);
+            let n2 = parseFloat(document.getElementById("num2").value);
+            let affichage = document.getElementById("res-signe");
+
+            if (isNaN(n1) || isNaN(n2)) { affichage.innerText = "Entrez deux nombres."; return; }
+            if (n1 === 0 || n2 === 0) affichage.innerText = "Le produit est nul.";
+            else if ((n1 > 0 && n2 > 0) || (n1 < 0 && n2 < 0)) affichage.innerText = "Le produit est positif.";
+            else affichage.innerText = "Le produit est négatif.";
+        }
+
+        function afficherResultat(operation) {
+            let a = parseInt(document.getElementById("valA").value);
+            let b = parseInt(document.getElementById("valB").value);
+            let res = 0;
+
+            if (isNaN(a) || isNaN(b)) {
+                document.getElementById("res-arith").innerText = "Veuillez entrer des entiers positifs.";
+                return;
+            }
+
+            if (operation === 'multiplication') {
+                for (let i = 0; i < b; i++) res += a;
+            } else if (operation === 'division') {
+                if (b === 0) { document.getElementById("res-arith").innerText = "Division par zéro impossible."; return; }
+                let reste = a;
+                while (reste >= b) { reste -= b; res++; }
+            } else if (operation === 'puissance') {
+                if (b === 0) res = 1;
+                else {
+                    res = 1;
+                    for (let i = 0; i < b; i++) res *= a;
+                }
+            }
+            document.getElementById("res-arith").innerText = `Résultat : ${res}`;
+        }
+    </script>
+</body>
+</html>

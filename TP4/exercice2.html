@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 4 - Exercice 2 : Chaînes de caractères</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; }
+        section { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
+        h1, h2 { color: #2c3e50; }
+        input { padding: 8px; width: 80%; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 8px 15px; background-color: #2980b9; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 2px; }
+        button:hover { background-color: #1a5276; }
+        .resultat { font-weight: bold; color: #27ae60; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Exercice 2</h1>
+        
+        <h2>Tableaux et chaînes</h2>
+        <input type="text" id="texte" placeholder="Entrez un mot ou une phrase">
+        <br>
+        <button onclick="checkPalindrome()">1. Palindrome ?</button>
+        <button onclick="trierTexte()">2. Ordre alphabétique</button>
+        <button onclick="motPlusCourt()">3. Mot le plus court</button>
+        
+        <div id="res-texte" class="resultat"></div>
+    </section>
+
+    <script>
+        function checkPalindrome() {
+            let str = document.getElementById("texte").value.trim().toLowerCase();
+            if (!str) return;
+            let reversed = str.split('').reverse().join('');
+            let msg = (str === reversed) ? "C'est un palindrome." : "Ce n'est pas un palindrome.";
+            document.getElementById("res-texte").innerText = msg;
+        }
+
+        function trierTexte() {
+            let str = document.getElementById("texte").value.replace(/\s+/g, '');
+            document.getElementById("res-texte").innerText = str.split('').sort().join('');
+        }
+
+        function motPlusCourt() {
+            let str = document.getElementById("texte").value.trim();
+            if (!str) return;
+            
+            let mots = str.split(' ');
+            let court = mots[0];
+            let pos = 1;
+
+            for (let i = 1; i < mots.length; i++) {
+                if (mots[i].length < court.length) {
+                    court = mots[i];
+                    pos = i + 1;
+                }
+            }
+            document.getElementById("res-texte").innerText = `Mot: << ${court} >> et Position: ${pos}`;
+        }
+    </script>
+</body>
+</html>
