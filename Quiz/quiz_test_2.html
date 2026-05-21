@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Examen CSS HTML JavaScript</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff, #ecfeff);
+            color: #0f172a;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 12px 35px rgba(15, 23, 42, 0.15);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        h1 {
+            color: #0369a1;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            color: #475569;
+            font-size: 17px;
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 6px solid #0284c7;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #075985;
+            margin: 35px 0 18px;
+            padding-left: 12px;
+            border-left: 6px solid #0ea5e9;
+        }
+
+        .question {
+            background: #f8fafc;
+            border: 1px solid #dbeafe;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 22px;
+            transition: 0.2s;
+        }
+
+        .question:hover {
+            box-shadow: 0 5px 18px rgba(14, 165, 233, 0.12);
+        }
+
+        .question h3 {
+            color: #0c4a6e;
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        label:hover {
+            background: #e0f2fe;
+            border-color: #38bdf8;
+        }
+
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            margin-top: 10px;
+            padding: 13px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        pre {
+            background: #020617;
+            color: #e0f2fe;
+            padding: 18px;
+            border-radius: 14px;
+            overflow-x: auto;
+            margin: 14px 0;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        .btn-area {
+            text-align: center;
+            margin: 35px 0;
+        }
+
+        button {
+            background: #0284c7;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #0369a1;
+            transform: translateY(-2px);
+        }
+
+        #resultat {
+            display: none;
+            margin-top: 35px;
+            background: #ecfdf5;
+            border: 1px solid #86efac;
+            border-radius: 18px;
+            padding: 25px;
+        }
+
+        #score {
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            color: #15803d;
+            margin-bottom: 20px;
+        }
+
+        .correction {
+            background: white;
+            border-left: 6px solid #22c55e;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 16px 0;
+        }
+
+        .correction strong {
+            color: #166534;
+        }
+
+        .correct {
+            background: #dcfce7 !important;
+            border-color: #22c55e !important;
+        }
+
+        .incorrect {
+            background: #fee2e2 !important;
+            border-color: #ef4444 !important;
+        }
+
+        .answer-small {
+            color: #64748b;
+            font-size: 14px;
+            margin-top: 6px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 18px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            pre {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            <h1>Quiz type examen : CSS, HTML et JavaScript</h1>
+            <p class="subtitle">
+                Révision transversale avec questions de théorie et lecture de code.
+            </p>
+        </header>
+
+        <div class="info-box">
+            <strong>Consigne :</strong> sélectionnez une seule réponse par question.
+            Pour les questions de code, écrivez exactement ce que le programme affiche.
+            Cliquez ensuite sur <strong>Corriger le quiz</strong>.
+        </div>
+
+        <form id="quizForm">
+
+            <h2>📝 Partie 1 : Questions à Choix Multiples</h2>
+
+            <div class="question">
+                <h3>Question 1 - CSS : Généralités</h3>
+                <label><input type="radio" name="q1" value="A"> A) Le CSS est toujours intégré à une page HTML via un fichier externe.</label>
+                <label><input type="radio" name="q1" value="B"> B) Le CSS ne permet pas de positionner les éléments HTML.</label>
+                <label><input type="radio" name="q1" value="C"> C) Le CSS peut être intégré à une page HTML sans fichier externe.</label>
+                <label><input type="radio" name="q1" value="D"> D) La balise &lt;style src="style.css"&gt; permet d'inclure un fichier CSS externe.</label>
+            </div>
+
+            <div class="question">
+                <h3>Question 2 - CSS : Sélecteurs</h3>
+                <label><input type="radio" name="q2" value="A"> A) Les sélecteurs suivants sont des sélecteurs de classe : p, div, a, h2, id.</label>
+                <label><input type="radio" name="q2" value="B"> B) Les sélecteurs suivants sont des sélecteurs de classe : .div, .head, .hover.</label>
+                <label><input type="radio" name="q2" value="C"> C) Les sélecteurs suivants sont des sélecteurs d'attribut : #div, #id, #hover.</label>
+                <label><input type="radio" name="q2" value="D"> D) Les sélecteurs suivants sont des sélecteurs d'identifiant : :hover, :first-child.</label>
+            </div>
+
+            <div class="question">
+                <h3>Question 3 - CSS : Pseudo-classes et Attributs</h3>
+                <label><input type="radio" name="q3" value="A"> A) Le sélecteur a:visited désigne un lien survolé par la souris.</label>
+                <label><input type="radio" name="q3" value="B"> B) Le sélecteur div[lang$="us"] cible un élément dont l'attribut lang se termine par "us".</label>
+                <label><input type="radio" name="q3" value="C"> C) Le sélecteur a:hover désigne les liens hypertextes déjà visités.</label>
+                <label><input type="radio" name="q3" value="D"> D) Une pseudo-classe s'écrit avec un point, par exemple .hover.</label>
+            </div>
+
+            <div class="question">
+                <h3>Question 4 - CSS : Couleurs</h3>
+                <label><input type="radio" name="q4" value="A"> A) La valeur hexadécimale #ff0000 représente la couleur bleue.</label>
+                <label><input type="radio" name="q4" value="B"> B) En valeur RGB, la couleur rouge s'écrit rgb(0, 255, 0).</label>
+                <label><input type="radio" name="q4" value="C"> C) Avec CSS, les couleurs peuvent être spécifiées en tant que valeurs RGB, par exemple rgb(255, 0, 0) pour le rouge.</label>
+                <label><input type="radio" name="q4" value="D"> D) Les noms de couleurs ne sont pas acceptés en CSS, il faut toujours utiliser des codes.</label>
+            </div>
+
+            <div class="question">
+                <h3>Question 5 - CSS : Tableaux et Curseurs</h3>
+                <label><input type="radio" name="q5" value="A"> A) La propriété border-collapse: collapse; détermine que les bordures d'un tableau sont fusionnées.</label>
+                <label><input type="radio" name="q5" value="B"> B) La propriété border-collapse: separate; fusionne les bordures d'un tableau.</label>
+                <label><input type="radio" name="q5" value="C"> C) La valeur cursor: wait; modifie le pointeur pour afficher une croix.</label>
+                <label><input type="radio" name="q5" value="D"> D) La propriété cursor ne possède que la valeur auto par défaut et ne peut être modifiée.</label>
+            </div>
+
+            <div class="question">
+                <h3>Question 6 - HTML : Enchaînement de pages</h3>
+                <label><input type="radio" name="q6" value="A"> A) Une balise &lt;a&gt; dont l'attribut target est égal à _blank permet d'afficher la page cible dans le même cadre.</label>
+                <label><input type="radio" name="q6" value="B"> B) L'attribut src d'une balise &lt;a&gt; peut contenir une mention mailto pour envoyer un email.</label>
+                <label><input type="radio" name="q6" value="C"> C) Une balise &lt;a&gt; dont l'attribut target est égal à _self permet d'afficher la page cible dans le même cadre ou onglet que celui qui comporte la balise.</label>
+                <label><input type="radio" name="q6" value="D"> D) L'attribut href d'une balise &lt;a&gt; ne peut pas contenir une URL vers un autre site web.</label>
+            </div>
+
+            <div class="question">
+                <h3>Question 7 - JavaScript : Les types de données</h3>
+                <label><input type="radio" name="q7" value="A"> A) Une variable déclarée avec le mot-clé const peut changer de valeur même après l'initialisation.</label>
+                <label><input type="radio" name="q7" value="B"> B) Une variable ne peut pas être utilisée si elle n'a pas été initialisée.</label>
+                <label><input type="radio" name="q7" value="C"> C) Il n'est pas obligatoire d'initialiser une variable pour la déclarer.</label>
+                <label><input type="radio" name="q7" value="D"> D) Il est obligatoire d'initialiser une variable au moment de sa déclaration.</label>
+            </div>
+
+            <h2>💻 Partie 2 : Lecture de code JavaScript</h2>
+
+            <div class="question">
+                <h3>Question 8</h3>
+                <pre><code>let x = 1;
+let a = 8;
+
+if(1){
+    a = a - 9;
+}
+if(x){
+    a = a - 9;
+}
+
+console.log(a);</code></pre>
+                <p><strong>Affichage :</strong></p>
+                <input type="text" name="q8" placeholder="Votre réponse...">
+                <p class="answer-small">Exemple attendu : -10</p>
+            </div>
+
+            <div class="question">
+                <h3>Question 9</h3>
+                <pre><code>let tab = [1, 2, 3, 4, 5];
+let v = 8;
+
+console.log(tab[v]);</code></pre>
+                <p><strong>Affichage :</strong></p>
+                <input type="text" name="q9" placeholder="Votre réponse...">
+                <p class="answer-small">Exemple attendu : undefined</p>
+            </div>
+
+            <div class="btn-area">
+                <button type="button" onclick="corrigerQuiz()">Corriger le quiz</button>
+            </div>
+
+        </form>
+
+        <section id="resultat">
+            <div id="score"></div>
+
+            <h2>✅ Corrigé détaillé</h2>
+
+            <div class="correction">
+                <strong>Question 1 : C</strong>
+                <p>Le CSS peut être intégré directement dans une page HTML grâce à la balise <code>&lt;style&gt;</code> ou à l'attribut <code>style</code>. Un fichier externe n'est pas obligatoire. Pour un fichier externe, on utilise <code>&lt;link rel="stylesheet" href="..."&gt;</code>.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 2 : B</strong>
+                <p>Les sélecteurs de classe commencent par un point : <code>.div</code>, <code>.head</code>, <code>.hover</code>. Les balises s'écrivent sans préfixe, les identifiants avec <code>#</code>, et les pseudo-classes avec <code>:</code>.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 3 : B</strong>
+                <p>Le sélecteur <code>[attr$="valeur"]</code> cible un attribut qui se termine par une certaine valeur. Ainsi, <code>div[lang$="us"]</code> cible un élément <code>div</code> dont l'attribut <code>lang</code> se termine par <code>us</code>.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 4 : C</strong>
+                <p>En CSS, les couleurs peuvent être écrites en RGB. Le rouge pur correspond à <code>rgb(255, 0, 0)</code>. Il peut aussi s'écrire <code>#ff0000</code> ou <code>red</code>.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 5 : A</strong>
+                <p>La propriété <code>border-collapse: collapse;</code> fusionne les bordures d'un tableau. La valeur <code>separate</code> les garde séparées. Le curseur <code>wait</code> affiche un indicateur d'attente, pas une croix.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 6 : C</strong>
+                <p><code>target="_self"</code> ouvre le lien dans le même onglet ou cadre. C'est aussi le comportement par défaut d'un lien HTML.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 7 : C</strong>
+                <p>Avec <code>let</code> ou <code>var</code>, il est possible de déclarer une variable sans l'initialiser. Sa valeur sera alors <code>undefined</code>. En revanche, une constante déclarée avec <code>const</code> doit être initialisée et ne peut pas être réassignée.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 8 : -10</strong>
+                <p><code>a</code> vaut d'abord 8. La condition <code>if(1)</code> est vraie, donc <code>a</code> devient -1. Ensuite, <code>x</code> vaut 1, ce qui est également évalué comme vrai, donc <code>a</code> devient -10.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 9 : undefined</strong>
+                <p>Le tableau contient 5 éléments, donc les index disponibles vont de 0 à 4. L'index 8 n'existe pas. JavaScript retourne donc <code>undefined</code>.</p>
+            </div>
+        </section>
+
+        <footer>
+            Quiz interactif type examen — CSS, HTML et JavaScript
+        </footer>
+    </div>
+
+    <script>
+        function corrigerQuiz() {
+            const bonnesReponsesQCM = {
+                q1: "C",
+                q2: "B",
+                q3: "B",
+                q4: "C",
+                q5: "A",
+                q6: "C",
+                q7: "C"
+            };
+
+            let score = 0;
+            const total = 9;
+
+            for (let question in bonnesReponsesQCM) {
+                const inputs = document.querySelectorAll(`input[name="${question}"]`);
+                const reponseSelectionnee = document.querySelector(`input[name="${question}"]:checked`);
+
+                inputs.forEach(input => {
+                    input.parentElement.classList.remove("correct", "incorrect");
+
+                    if (input.value === bonnesReponsesQCM[question]) {
+                        input.parentElement.classList.add("correct");
+                    }
+                });
+
+                if (reponseSelectionnee) {
+                    if (reponseSelectionnee.value === bonnesReponsesQCM[question]) {
+                        score++;
+                    } else {
+                        reponseSelectionnee.parentElement.classList.add("incorrect");
+                    }
+                }
+            }
+
+            const q8 = document.querySelector('input[name="q8"]');
+            const q9 = document.querySelector('input[name="q9"]');
+
+            q8.classList.remove("correct", "incorrect");
+            q9.classList.remove("correct", "incorrect");
+
+            if (q8.value.trim() === "-10") {
+                score++;
+                q8.classList.add("correct");
+            } else {
+                q8.classList.add("incorrect");
+            }
+
+            if (q9.value.trim().toLowerCase() === "undefined") {
+                score++;
+                q9.classList.add("correct");
+            } else {
+                q9.classList.add("incorrect");
+            }
+
+            const resultat = document.getElementById("resultat");
+            const scoreDiv = document.getElementById("score");
+
+            let appreciation = "";
+
+            if (score === total) {
+                appreciation = "Excellent, toutes les réponses sont correctes !";
+            } else if (score >= 7) {
+                appreciation = "Très bon résultat, quelques détails à revoir.";
+            } else if (score >= 5) {
+                appreciation = "Résultat correct, mais il faut consolider certaines notions.";
+            } else {
+                appreciation = "Il faut revoir les bases du CSS, du HTML et du JavaScript.";
+            }
+
+            scoreDiv.innerHTML = `Votre score : ${score} / ${total}<br>${appreciation}`;
+            resultat.style.display = "block";
+            resultat.scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
+</body>
+</html>
