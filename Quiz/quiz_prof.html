@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz JavaScript HTML - Type Examen</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #fdf2f8, #eef2ff);
+            color: #111827;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        h1 {
+            color: #7c3aed;
+            margin-bottom: 10px;
+            font-size: 34px;
+        }
+
+        .subtitle {
+            color: #4b5563;
+            font-size: 17px;
+        }
+
+        .info {
+            background: #f5f3ff;
+            border-left: 6px solid #8b5cf6;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .question {
+            background: #f9fafb;
+            border: 1px solid #ddd6fe;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 22px;
+        }
+
+        .question h2 {
+            color: #5b21b6;
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 16px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 12px 0;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        label {
+            display: block;
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        label:hover {
+            background: #ede9fe;
+            border-color: #8b5cf6;
+        }
+
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        .btn-area {
+            text-align: center;
+            margin: 35px 0;
+        }
+
+        button {
+            background: #7c3aed;
+            color: white;
+            border: none;
+            padding: 15px 32px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #6d28d9;
+            transform: translateY(-2px);
+        }
+
+        #resultat {
+            display: none;
+            background: #ecfdf5;
+            border: 1px solid #86efac;
+            border-radius: 18px;
+            padding: 25px;
+            margin-top: 35px;
+        }
+
+        #score {
+            text-align: center;
+            font-size: 27px;
+            font-weight: bold;
+            color: #15803d;
+            margin-bottom: 25px;
+        }
+
+        .correction {
+            background: white;
+            border-left: 6px solid #22c55e;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 14px 0;
+        }
+
+        .correction strong {
+            color: #166534;
+        }
+
+        .correct {
+            background: #dcfce7 !important;
+            border-color: #22c55e !important;
+        }
+
+        .incorrect {
+            background: #fee2e2 !important;
+            border-color: #ef4444 !important;
+        }
+
+        .not-answered {
+            border: 2px dashed #f97316;
+        }
+
+        .top-score {
+            background: #fef3c7;
+            border-left: 6px solid #f59e0b;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 650px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 18px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            pre {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Quiz JavaScript / HTML - Type Examen</h1>
+            <p class="subtitle">
+                Variables, conditions, boucles, fonctions, tableaux, DOM, événements et méthodes JavaScript.
+            </p>
+        </header>
+
+        <div class="info">
+            <strong>Consigne :</strong> sélectionnez l'unique bonne réponse pour chaque question, puis cliquez sur 
+            <strong>Corriger le quiz</strong>. Le corrigé détaillé s'affichera automatiquement.
+        </div>
+
+        <form id="quizForm">
+            <div id="questionsContainer"></div>
+
+            <div class="btn-area">
+                <button type="button" onclick="corrigerQuiz()">Corriger le quiz</button>
+            </div>
+        </form>
+
+        <section id="resultat">
+            <div id="score"></div>
+            <div class="top-score" id="appreciation"></div>
+
+            <h2>✅ Corrigé détaillé</h2>
+            <div id="correctionsContainer"></div>
+        </section>
+
+        <footer>
+            Quiz interactif JavaScript / HTML — Révision type examen
+        </footer>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                titre: "Question 1",
+                enonce: "Quelle affirmation est incorrecte ?",
+                code: "",
+                choix: [
+                    "La balise <script> permet de déclarer du code JS",
+                    "La balise <script> avec l'attribut src permet d'attacher un fichier JS au document HTML",
+                    "L'attribut js d'une balise HTML permet de définir du code JS",
+                    "L'attribut onclick permet de définir le code JS à exécuter lors d'un clic sur une balise"
+                ],
+                reponse: "C",
+                explication: "Il n'existe pas d'attribut HTML standard nommé js permettant de définir du JavaScript. On utilise plutôt la balise script, un fichier externe avec src, ou des attributs événementiels comme onclick."
+            },
+            {
+                titre: "Question 2",
+                enonce: "Quel mot-clé doit être utilisé pour déclarer une variable dont la valeur est figée ?",
+                code: "",
+                choix: ["let", "const", "var", "global"],
+                reponse: "B",
+                explication: "const permet de déclarer une constante, c'est-à-dire une variable qui ne peut pas être réassignée."
+            },
+            {
+                titre: "Question 3",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `let declar1 = 12;
+if(declar1 % 2 > 1) {
+    declar1++;
+}
+else {
+    declar1--;
+}
+console.log(declar1);`,
+                choix: ["erreur", "11", "12", "13"],
+                reponse: "B",
+                explication: "12 % 2 vaut 0. La condition 0 > 1 est fausse, donc le else s'exécute et declar1 devient 11."
+            },
+            {
+                titre: "Question 4",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `const declar1 = 164;
+declar1 = Math.random() * 164;
+console.log(declar1);`,
+                choix: ["erreur", "0", "1", "une valeur entre 0 et 164"],
+                reponse: "A",
+                explication: "Une constante déclarée avec const ne peut pas être réassignée. Cela provoque une erreur."
+            },
+            {
+                titre: "Question 5",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `var declar1 = 77;
+console.log("-10" + declar1);`,
+                choix: ["erreur", "67", "87", "-1077"],
+                reponse: "D",
+                explication: "Avec l'opérateur +, si une chaîne est présente, JavaScript concatène. Donc \"-10\" + 77 donne \"-1077\"."
+            },
+            {
+                titre: "Question 6",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `let declar1, declar2;
+declar1 = 54;
+declar2 = "13.9";
+console.log((declar1 - declar2) > 30 ? "Pomme" : "Orange");`,
+                choix: ["Pomme", "Orange", "erreur", "41.1"],
+                reponse: "A",
+                explication: "54 - \"13.9\" donne 40.1. Comme 40.1 > 30, le résultat est Pomme."
+            },
+            {
+                titre: "Question 7",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `let declar1 = "Hippopotame";
+if(declar1.length > 9) {
+    console.log(declar1.toUpperCase());
+}
+else if(declar1.length > 5) {
+    console.log(declar1.toLowerCase());
+}
+else {
+    console.log(declar1);
+}`,
+                choix: ["erreur", "Hippopotame", "hippopotame", "HIPPOPOTAME"],
+                reponse: "D",
+                explication: "Hippopotame contient plus de 9 caractères, donc toUpperCase() est exécuté."
+            },
+            {
+                titre: "Question 8",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `const declar1 = "10.0";
+if(declar1 === 10.0) {
+    console.log("Fraise");
+}
+else if(declar1 == 10) {
+    console.log("Citron");
+}
+else {
+    console.log("Prune");
+}`,
+                choix: ["erreur", "Fraise", "Citron", "Prune"],
+                reponse: "C",
+                explication: "Avec ===, le type est différent. Avec ==, la chaîne \"10.0\" est convertie en nombre et vaut 10. Le programme affiche Citron."
+            },
+            {
+                titre: "Question 9",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `const declar1 = "Champignon";
+for(let i = 1; i < declar1.length; i++) {
+    if(i > 5) break;
+    console.log(declar1[i]);
+}`,
+                choix: ["gnon", "Champi", "Champ", "hampi"],
+                reponse: "D",
+                explication: "Les caractères affichés sont ceux d'index 1 à 5 : h, a, m, p, i."
+            },
+            {
+                titre: "Question 10",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `let declar1 = 32;
+let declar2 = 43;
+let declar3 = 11;
+if(declar1 > declar2 && declar2 > declar3) {
+    console.log("Avion");
+}
+else if(declar1 > declar2 || declar2 > declar3) {
+    console.log("Sous-marin");
+}
+else {
+    console.log("Autobus");
+}`,
+                choix: ["Avion", "Sous-marin", "Autobus", "erreur"],
+                reponse: "B",
+                explication: "32 > 43 est faux, mais 43 > 11 est vrai. Avec ||, une seule condition vraie suffit."
+            },
+            {
+                titre: "Question 11",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `let declar1 = 32;
+let declar2 = 26;
+let declar3 = 44;
+if(declar1 < declar2 || declar2 < declar3) {
+    console.log("Pastèque");
+}
+else if(declar1 > declar2 && declar2 > declar3) {
+    console.log("Tomate");
+}
+else {
+    console.log("Carotte");
+}`,
+                choix: ["erreur", "Pastèque", "Tomate", "Carotte"],
+                reponse: "B",
+                explication: "32 < 26 est faux, mais 26 < 44 est vrai. La condition avec || est donc vraie."
+            },
+            {
+                titre: "Question 12",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `let couleurs = ["Bleu", "Rouge", "Vert", "Jaune", "Noir"];
+console.log(couleurs[0]);`,
+                choix: ["erreur", "Noir", "Rouge", "Bleu"],
+                reponse: "D",
+                explication: "Le premier élément d'un tableau est à l'index 0. couleurs[0] vaut Bleu."
+            },
+            {
+                titre: "Question 13",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `let couleurs = ["Bleu", "Rouge", "Vert", "Jaune", "Noir"];
+let index = couleurs.length - 1;
+console.log(couleurs[index]);`,
+                choix: ["erreur", "Bleu", "Noir", "Bleu Rouge Vert Jaune"],
+                reponse: "C",
+                explication: "couleurs.length vaut 5, donc index vaut 4. couleurs[4] vaut Noir."
+            },
+            {
+                titre: "Question 14",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `let compteur = 10;
+do {
+    compteur -= 3;
+    console.log(compteur);
+} while(compteur > 8);`,
+                choix: ["rien", "7", "3", "10"],
+                reponse: "B",
+                explication: "La boucle do...while s'exécute au moins une fois. compteur passe de 10 à 7, puis la condition devient fausse."
+            },
+            {
+                titre: "Question 15",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `let compteur = 9;
+let affichage = "";
+while(compteur > 5) {
+    compteur--;
+    affichage += compteur;
+}
+console.log(affichage);`,
+                choix: ["98765", "8765", "876", "9876"],
+                reponse: "B",
+                explication: "Les valeurs ajoutées sont 8, 7, 6 et 5. Résultat : 8765."
+            },
+            {
+                titre: "Question 16",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `function afficher(param) {
+    let valeur = 10;
+    console.log("La réponse est " + param);
+}
+afficher(valeur);`,
+                choix: ["La réponse est 10", "La réponse est", "10", "erreur"],
+                reponse: "D",
+                explication: "valeur est déclarée dans la fonction. Elle n'existe pas à l'extérieur. L'appel afficher(valeur) provoque une erreur."
+            },
+            {
+                titre: "Question 17",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `function comparaison(param1, param2) {
+    if(param1 < param2){
+        console.log(param1 + " est plus petit que " + param2);
+    }
+    else if(param1 > param2) {
+        console.log(param1 + " est plus grand que " + param2);
+    }
+    else {
+        console.log(param1 + " est égal à " + param2);
+    }
+}
+comparaison(2, -1);`,
+                choix: ["2 est plus petit que -1", "2 est plus grand que -1", "2 est égal à -1", "erreur"],
+                reponse: "B",
+                explication: "2 est supérieur à -1. Le programme affiche : 2 est plus grand que -1."
+            },
+            {
+                titre: "Question 18",
+                enonce: "Quelle affirmation est incorrecte ?",
+                code: `function doSomething(param1, param2, param3 = false, param4 = 9) { }`,
+                choix: [
+                    "param4 est un paramètre optionnel",
+                    "l'appel doSomething(\"Bonjour\"); est correct",
+                    "param1 est un paramètre obligatoire",
+                    "param3 a la valeur false si aucune valeur n'est donnée"
+                ],
+                reponse: "C",
+                explication: "En JavaScript, un paramètre non fourni vaut undefined. param1 n'est donc pas obligatoire au sens strict."
+            },
+            {
+                titre: "Question 19",
+                enonce: "Quelle balise HTML permet d'attacher un fichier JavaScript ?",
+                code: "",
+                choix: [
+                    "<link rel=\"stylesheet\" href=\"javascript.css\">",
+                    "<meta charset=\"UTF-8\">",
+                    "<script src=\"javascript.js\"><\\/script>",
+                    "<include href=\"javascript.js\" alt=\"js\">"
+                ],
+                reponse: "C",
+                explication: "Un fichier JavaScript externe s'attache avec la balise script et l'attribut src."
+            },
+            {
+                titre: "Question 20",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `let value = 0;
+for(let i = 1; i < 5; i++) {
+    value += i;
+}
+console.log(value);`,
+                choix: ["15", "1234", "10", "5"],
+                reponse: "C",
+                explication: "La boucle additionne 1 + 2 + 3 + 4, ce qui donne 10."
+            },
+            {
+                titre: "Question 21",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `let i = 0;
+for(i = 1; i < 9; i++) {
+    if(i > 4) continue;
+    if(i == 7) break;
+}
+console.log(i);`,
+                choix: ["9", "7", "4", "1"],
+                reponse: "A",
+                explication: "Quand i > 4, continue saute la suite de la boucle. Le break sur i == 7 n'est jamais atteint. La boucle se termine avec i = 9."
+            },
+            {
+                titre: "Question 22",
+                enonce: "Quel sera le résultat de l'exécution de ce code ?",
+                code: `let i = 0;
+for(i = 2; i < 11; i++) {
+    if(i == 5) break;
+    if(i > 8) continue;
+}
+console.log(i);`,
+                choix: ["11", "8", "5", "1"],
+                reponse: "C",
+                explication: "La boucle s'arrête dès que i vaut 5 à cause de break."
+            },
+            {
+                titre: "Question 23",
+                enonce: "Quelle méthode permet d'afficher un message dans la console du navigateur ?",
+                code: "",
+                choix: ["console.display()", "console.log()", "console.show()", "console.print()"],
+                reponse: "B",
+                explication: "La méthode correcte est console.log()."
+            },
+            {
+                titre: "Question 24",
+                enonce: "Quelle boucle est utilisée lorsque le nombre d'itérations est inconnu et éventuellement égal à 0 ?",
+                code: "",
+                choix: ["for", "while", "do...while", "foreach"],
+                reponse: "B",
+                explication: "while vérifie la condition avant d'exécuter le bloc, donc elle peut s'exécuter 0 fois."
+            },
+            {
+                titre: "Question 25",
+                enonce: "Comment accéder à un élément HTML par son identifiant en JavaScript ?",
+                code: "",
+                choix: [
+                    "document.getElementById()",
+                    "document.getElementByTagName()",
+                    "document.querySelectorAll()",
+                    "document.getElementsByClassName()"
+                ],
+                reponse: "A",
+                explication: "document.getElementById() permet de récupérer un élément grâce à son id."
+            },
+            {
+                titre: "Question 26",
+                enonce: "Quel événement est déclenché lorsqu'un utilisateur clique sur un élément HTML ?",
+                code: "",
+                choix: ["onload", "onchange", "onclick", "onhover"],
+                reponse: "C",
+                explication: "onclick correspond à un clic sur un élément."
+            },
+            {
+                titre: "Question 27",
+                enonce: "Quel événement est déclenché lorsqu'un utilisateur saisit des informations dans un champ texte ?",
+                code: "",
+                choix: ["onload", "onchange", "onclick", "oninput"],
+                reponse: "D",
+                explication: "oninput est déclenché lors de la saisie dans un champ."
+            },
+            {
+                titre: "Question 28",
+                enonce: "Quel événement est déclenché lorsqu'un utilisateur sélectionne une valeur dans une liste déroulante ?",
+                code: "",
+                choix: ["onload", "onchange", "onclick", "oninput"],
+                reponse: "B",
+                explication: "onchange se déclenche lorsqu'une valeur change, par exemple dans une liste déroulante."
+            },
+            {
+                titre: "Question 29",
+                enonce: "Quelle est la valeur de Math.random() en JavaScript ?",
+                code: "",
+                choix: [
+                    "Un nombre aléatoire entre 0 inclus et 1 exclus",
+                    "Un nombre aléatoire entre 1 et 100",
+                    "Un nombre aléatoire entre 0 et 10",
+                    "Un nombre aléatoire entre -1 et 1"
+                ],
+                reponse: "A",
+                explication: "Math.random() retourne un nombre entre 0 inclus et 1 exclu."
+            },
+            {
+                titre: "Question 30",
+                enonce: "Quelle est la différence entre == et === en JavaScript ?",
+                code: "",
+                choix: [
+                    "== vérifie uniquement la valeur, === vérifie la valeur et le type",
+                    "== vérifie uniquement le type, === vérifie uniquement la valeur",
+                    "== et === sont identiques",
+                    "== est utilisé pour les chaînes de caractères, === pour les nombres"
+                ],
+                reponse: "A",
+                explication: "== compare avec conversion éventuelle. === compare la valeur et le type."
+            },
+            {
+                titre: "Question 31",
+                enonce: "Quelle méthode permet de convertir une chaîne de caractères en nombre entier en JavaScript ?",
+                code: "",
+                choix: ["parseInt()", "parseFloat()", "Number()", "String()"],
+                reponse: "A",
+                explication: "parseInt() convertit une chaîne en entier."
+            },
+            {
+                titre: "Question 32",
+                enonce: "Quelle méthode permet de convertir une chaîne de caractères en nombre décimal en JavaScript ?",
+                code: "",
+                choix: ["parseInt()", "parseFloat()", "Number()", "String()"],
+                reponse: "B",
+                explication: "parseFloat() convertit une chaîne en nombre décimal."
+            },
+            {
+                titre: "Question 33",
+                enonce: "Quelle méthode permet d'arrondir un nombre à l'entier supérieur en JavaScript ?",
+                code: "",
+                choix: ["Math.round()", "Math.ceil()", "Math.floor()", "Math.up()"],
+                reponse: "B",
+                explication: "Math.ceil() arrondit à l'entier supérieur."
+            },
+            {
+                titre: "Question 34",
+                enonce: "Quelle méthode permet d'arrondir un nombre à l'entier inférieur en JavaScript ?",
+                code: "",
+                choix: ["Math.round()", "Math.ceil()", "Math.floor()", "Math.up()"],
+                reponse: "C",
+                explication: "Math.floor() arrondit à l'entier inférieur."
+            },
+            {
+                titre: "Question 35",
+                enonce: "Quelle méthode permet d'arrondir un nombre en JavaScript ?",
+                code: "",
+                choix: ["Math.round()", "Math.ceil()", "Math.floor()", "Math.up()"],
+                reponse: "A",
+                explication: "Math.round() arrondit à l'entier le plus proche."
+            },
+            {
+                titre: "Question 36",
+                enonce: "Comment vérifier si un élément existe dans un tableau en JavaScript ?",
+                code: "",
+                choix: [
+                    "tableau.contains(element)",
+                    "tableau.includes(element)",
+                    "tableau.has(element)",
+                    "tableau.exists(element)"
+                ],
+                reponse: "B",
+                explication: "includes() vérifie si un tableau contient une valeur."
+            },
+            {
+                titre: "Question 37",
+                enonce: "Comment créer une boucle qui s'exécute au moins une fois en JavaScript ?",
+                code: "",
+                choix: ["for", "while", "do...while", "loop"],
+                reponse: "C",
+                explication: "do...while exécute le bloc avant de tester la condition."
+            },
+            {
+                titre: "Question 38",
+                enonce: "Comment accéder à tous les éléments <p> d'une page HTML en JavaScript ?",
+                code: "",
+                choix: [
+                    "document.getElementsByTagName(\"p\")",
+                    "document.querySelectorAll(\"<p>\")",
+                    "document.getByTag(\"p\")",
+                    "document.findAll(\"<p>\")"
+                ],
+                reponse: "A",
+                explication: "document.getElementsByTagName(\"p\") récupère tous les éléments p. Avec querySelectorAll, il faudrait écrire \"p\" sans chevrons."
+            },
+            {
+                titre: "Question 39",
+                enonce: "Quelle méthode permet de générer un nombre aléatoire entre 0 et 10 en JavaScript ?",
+                code: "",
+                choix: [
+                    "Math.random() * 10",
+                    "Math.floor(Math.random() * 11)",
+                    "Math.ceil(Math.random() * 10)",
+                    "Math.random(0, 10)"
+                ],
+                reponse: "B",
+                explication: "Math.floor(Math.random() * 11) génère un entier entre 0 et 10 inclus."
+            },
+            {
+                titre: "Question 40",
+                enonce: "Quelle méthode permet de transformer une chaîne de caractères en tableau en utilisant un délimiteur ?",
+                code: "",
+                choix: ["chaine.toArray()", "chaine.split()", "chaine.join()", "chaine.explode()"],
+                reponse: "B",
+                explication: "split() découpe une chaîne en tableau selon un séparateur."
+            }
+        ];
+
+        const lettres = ["A", "B", "C", "D"];
+
+        function afficherQuestions() {
+            const container = document.getElementById("questionsContainer");
+            container.innerHTML = "";
+
+            questions.forEach((q, index) => {
+                const bloc = document.createElement("div");
+                bloc.className = "question";
+                bloc.id = `bloc-q${index}`;
+
+                let html = `<h2>${q.titre}</h2>`;
+                html += `<p><strong>${escapeHtml(q.enonce)}</strong></p>`;
+
+                if (q.code.trim() !== "") {
+                    html += `<pre><code>${escapeHtml(q.code)}</code></pre>`;
+                }
+
+                q.choix.forEach((choix, i) => {
+                    html += `
+                        <label>
+                            <input type="radio" name="q${index}" value="${lettres[i]}">
+                            ${lettres[i]}. ${escapeHtml(choix).replaceAll("&lt;\\\\/script&gt;", "&lt;/script&gt;")}
+                        </label>
+                    `;
+                });
+
+                bloc.innerHTML = html;
+                container.appendChild(bloc);
+            });
+        }
+
+        function corrigerQuiz() {
+            let score = 0;
+
+            questions.forEach((q, index) => {
+                const bloc = document.getElementById(`bloc-q${index}`);
+                const inputs = document.querySelectorAll(`input[name="q${index}"]`);
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+
+                bloc.classList.remove("not-answered");
+
+                inputs.forEach(input => {
+                    input.parentElement.classList.remove("correct", "incorrect");
+
+                    if (input.value === q.reponse) {
+                        input.parentElement.classList.add("correct");
+                    }
+                });
+
+                if (selected) {
+                    if (selected.value === q.reponse) {
+                        score++;
+                    } else {
+                        selected.parentElement.classList.add("incorrect");
+                    }
+                } else {
+                    bloc.classList.add("not-answered");
+                }
+            });
+
+            afficherResultat(score);
+            afficherCorrections();
+        }
+
+        function afficherResultat(score) {
+            const total = questions.length;
+            const resultat = document.getElementById("resultat");
+            const scoreDiv = document.getElementById("score");
+            const appreciation = document.getElementById("appreciation");
+
+            let message = "";
+
+            if (score === total) {
+                message = "Excellent ! Tu as tout juste.";
+            } else if (score >= 32) {
+                message = "Très bon résultat. Tu maîtrises bien les bases.";
+            } else if (score >= 25) {
+                message = "Bon résultat, mais certaines notions doivent être revues.";
+            } else if (score >= 20) {
+                message = "Résultat moyen. Relis attentivement les corrections.";
+            } else {
+                message = "Il faut revoir les bases du JavaScript, surtout les conditions, boucles et fonctions.";
+            }
+
+            scoreDiv.innerHTML = `Votre score : ${score} / ${total}`;
+            appreciation.innerHTML = `<strong>Appréciation :</strong> ${message}`;
+
+            resultat.style.display = "block";
+            resultat.scrollIntoView({ behavior: "smooth" });
+        }
+
+        function afficherCorrections() {
+            const container = document.getElementById("correctionsContainer");
+            container.innerHTML = "";
+
+            questions.forEach((q, index) => {
+                const div = document.createElement("div");
+                div.className = "correction";
+
+                const bonneLettre = q.reponse;
+                const bonneIndex = lettres.indexOf(bonneLettre);
+                const bonneReponse = q.choix[bonneIndex];
+
+                div.innerHTML = `
+                    <strong>${q.titre} : ${bonneLettre}</strong>
+                    <p><em>Bonne réponse :</em> ${escapeHtml(bonneReponse).replaceAll("&lt;\\\\/script&gt;", "&lt;/script&gt;")}</p>
+                    <p>${escapeHtml(q.explication)}</p>
+                `;
+
+                container.appendChild(div);
+            });
+        }
+
+        function escapeHtml(texte) {
+            return texte
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+        }
+
+        afficherQuestions();
+    </script>
+</body>
+</html>
