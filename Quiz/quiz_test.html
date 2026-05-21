@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz HTML CSS JavaScript DOM PHP</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1d4ed8;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #475569;
+        }
+
+        h2 {
+            margin: 35px 0 15px;
+            color: #0f172a;
+            border-left: 6px solid #2563eb;
+            padding-left: 12px;
+        }
+
+        .question {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 22px;
+        }
+
+        .question h3 {
+            color: #1e40af;
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            padding: 9px 12px;
+            margin: 8px 0;
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        label:hover {
+            background: #dbeafe;
+            border-color: #60a5fa;
+        }
+
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        pre {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 18px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 12px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        .btn-area {
+            text-align: center;
+            margin: 35px 0;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+            transform: scale(1.03);
+        }
+
+        #resultat {
+            display: none;
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 15px;
+            background: #ecfdf5;
+            border: 1px solid #86efac;
+        }
+
+        #score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #15803d;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .correction {
+            margin-top: 20px;
+            padding: 18px;
+            background: white;
+            border-left: 5px solid #22c55e;
+            border-radius: 10px;
+        }
+
+        .correct {
+            background: #dcfce7 !important;
+            border-color: #22c55e !important;
+        }
+
+        .incorrect {
+            background: #fee2e2 !important;
+            border-color: #ef4444 !important;
+        }
+
+        .note {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 18px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Quiz complet : HTML, CSS, JavaScript, DOM et PHP</h1>
+        <p class="intro">
+            Sélectionnez la bonne réponse pour chaque question, puis cliquez sur 
+            <strong>Corriger le quiz</strong> pour afficher votre score et les explications.
+        </p>
+
+        <div class="note">
+            <strong>Conseil :</strong> Essayez de répondre sans regarder le corrigé. 
+            Les questions sont inspirées d'examens classiques en développement web.
+        </div>
+
+        <form id="quizForm">
+
+            <h2>📝 Partie 1 : Questions à Choix Multiples</h2>
+
+            <div class="question">
+                <h3>Question 1 - HTML : Enchaînement de pages</h3>
+                <label><input type="radio" name="q1" value="A"> A) L'attribut href d'une balise a ne peut pas contenir une mention mailto pour envoyer un email.</label>
+                <label><input type="radio" name="q1" value="B"> B) Une balise a dont l'attribut target est égal à _blank permet d'afficher la page cible dans un nouvel onglet du navigateur.</label>
+                <label><input type="radio" name="q1" value="C"> C) Une balise a dont l'attribut target est égal à _self permet d'afficher la page cible dans un nouvel onglet du navigateur.</label>
+                <label><input type="radio" name="q1" value="D"> D) L'attribut src d'une balise a peut contenir une URL vers un autre site web.</label>
+            </div>
+
+            <div class="question">
+                <h3>Question 2 - CSS : Sélecteurs</h3>
+                <label><input type="radio" name="q2" value="A"> A) Les sélecteurs suivants sont des sélecteurs de balise : .div, .head, .hover.</label>
+                <label><input type="radio" name="q2" value="B"> B) Les sélecteurs suivants sont des sélecteurs d'identifiant : [div], [id=5].</label>
+                <label><input type="radio" name="q2" value="C"> C) Les sélecteurs suivants sont des sélecteurs de balise : p, div, a, h2, id.</label>
+                <label><input type="radio" name="q2" value="D"> D) Les sélecteurs suivants sont des sélecteurs de classe : #div, #id, #hover.</label>
+            </div>
+
+            <div class="question">
+                <h3>Question 3 - JavaScript : Les types de données</h3>
+                <label><input type="radio" name="q3" value="A"> A) Le type booléen en JavaScript s'écrit bool.</label>
+                <label><input type="radio" name="q3" value="B"> B) La valeur NaN sert pour indiquer que la valeur numérique n'est pas accessible.</label>
+                <label><input type="radio" name="q3" value="C"> C) Les chaînes de caractères en JavaScript s'encadrent uniquement entre des quotes doubles.</label>
+                <label><input type="radio" name="q3" value="D"> D) La valeur undefined sert pour indiquer qu'une variable n'a pas encore été initialisée.</label>
+            </div>
+
+            <div class="question">
+                <h3>Question 4 - DOM : Généralités</h3>
+                <label><input type="radio" name="q4" value="A"> A) Le D.O.M. est l'acronyme de Dynamic Object Management.</label>
+                <label><input type="radio" name="q4" value="B"> B) Le D.O.M. est une interface de programmation pour les documents web.</label>
+                <label><input type="radio" name="q4" value="C"> C) Le D.O.M. représente les éléments d'une page web de manière aléatoire.</label>
+                <label><input type="radio" name="q4" value="D"> D) Le D.O.M. est l'acronyme de Digital Object Manipulator.</label>
+            </div>
+
+            <div class="question">
+                <h3>Question 5 - DOM : Manipulations d'éléments</h3>
+                <label><input type="radio" name="q5" value="A"> A) On peut récupérer une liste d'éléments à partir de la méthode getElementById(...).</label>
+                <label><input type="radio" name="q5" value="B"> B) On peut utiliser la propriété innerHTML pour modifier le contenu d'un élément du DOM.</label>
+                <label><input type="radio" name="q5" value="C"> C) Un élément du DOM possède un attribut firstChildren qui contient son premier élément enfant.</label>
+                <label><input type="radio" name="q5" value="D"> D) On ne peut récupérer au plus qu'un seul élément à partir de la méthode getElementsByClassName(...).</label>
+            </div>
+
+            <div class="question">
+                <h3>Question 6 - PHP : Inclusion de fichiers</h3>
+                <label><input type="radio" name="q6" value="A"> A) En cas d'échec, include() va générer une erreur et le script va se stopper.</label>
+                <label><input type="radio" name="q6" value="B"> B) En cas d'échec, require() va générer un avertissement et le script continuera son exécution.</label>
+                <label><input type="radio" name="q6" value="C"> C) En cas d'échec, include() va générer un avertissement et le script continuera son exécution.</label>
+                <label><input type="radio" name="q6" value="D"> D) En cas d'échec, include() et require() ont exactement le même comportement.</label>
+            </div>
+
+            <div class="question">
+                <h3>Question 7 - PHP : Formulaires</h3>
+                <label><input type="radio" name="q7" value="A"> A) $_GET est le tableau associatif toujours utilisé pour récupérer les données des formulaires.</label>
+                <label><input type="radio" name="q7" value="B"> B) Les noms des variables PHP pour récupérer les données correspondent aux attributs id des champs input.</label>
+                <label><input type="radio" name="q7" value="C"> C) $_POST est le tableau associatif utilisé pour récupérer les données d'un formulaire avec l'attribut method qui vaut post.</label>
+                <label><input type="radio" name="q7" value="D"> D) On peut envoyer des fichiers volumineux avec la méthode GET d'un formulaire.</label>
+            </div>
+
+            <div class="question">
+                <h3>Question 8 - PHP : Fonctions mathématiques</h3>
+                <label><input type="radio" name="q8" value="A"> A) La fonction floor() permet de récupérer une valeur arrondie au supérieur.</label>
+                <label><input type="radio" name="q8" value="B"> B) La fonction ceil() permet de récupérer une valeur arrondie au supérieur.</label>
+                <label><input type="radio" name="q8" value="C"> C) La fonction randomize() permet de récupérer une valeur numérique aléatoire.</label>
+                <label><input type="radio" name="q8" value="D"> D) La fonction sup() permet de récupérer une valeur arrondie au supérieur.</label>
+            </div>
+
+            <h2>💻 Partie 2 : Lecture de code JavaScript</h2>
+
+            <div class="question">
+                <h3>Question 9</h3>
+                <pre><code>let tab = [1, 2, 3, 4, 5];
+let v = 8;
+console.log(tab[v]);</code></pre>
+                <p><strong>Qu'affiche le code ?</strong></p>
+                <input type="text" name="q9" placeholder="Votre réponse...">
+            </div>
+
+            <div class="question">
+                <h3>Question 10</h3>
+                <pre><code>let a = 43;
+let b = 5;
+let c = 3;
+let count = 0;
+let i = 0;
+
+for(i=a; i>=b; i=i-c){
+    count++;
+    i--;
+}
+console.log(count);</code></pre>
+                <p><strong>Qu'affiche le code ?</strong></p>
+                <input type="text" name="q10" placeholder="Votre réponse...">
+            </div>
+
+            <div class="btn-area">
+                <button type="button" onclick="corrigerQuiz()">Corriger le quiz</button>
+            </div>
+
+        </form>
+
+        <section id="resultat">
+            <div id="score"></div>
+
+            <h2>✅ Corrigé détaillé</h2>
+
+            <div class="correction">
+                <strong>Question 1 : B</strong>
+                <p>Une balise <code>&lt;a&gt;</code> avec l'attribut <code>target="_blank"</code> demande au navigateur d'ouvrir le lien dans un nouvel onglet. L'attribut <code>href</code> peut contenir une URL ou une adresse email avec <code>mailto:</code>.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 2 : C</strong>
+                <p>En CSS, les balises HTML brutes comme <code>p</code>, <code>div</code>, <code>a</code> ou <code>h2</code> peuvent être ciblées directement. Les classes utilisent un point et les identifiants utilisent un dièse.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 3 : D</strong>
+                <p>En JavaScript, une variable déclarée mais non initialisée vaut <code>undefined</code>. Le type booléen s'appelle <code>boolean</code>, et les chaînes peuvent utiliser des guillemets simples ou doubles.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 4 : B</strong>
+                <p>Le DOM signifie <em>Document Object Model</em>. C'est une interface de programmation permettant de manipuler les documents web avec JavaScript.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 5 : B</strong>
+                <p>La propriété <code>innerHTML</code> permet de lire ou modifier le contenu HTML d'un élément. <code>getElementById()</code> retourne un seul élément et le premier enfant s'appelle <code>firstChild</code>.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 6 : C</strong>
+                <p>En PHP, <code>include()</code> génère un avertissement et laisse le script continuer. En revanche, <code>require()</code> génère une erreur fatale et stoppe l'exécution.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 7 : C</strong>
+                <p>Un formulaire envoyé avec <code>method="POST"</code> est récupéré côté serveur avec la superglobale <code>$_POST</code>. Les champs sont récupérés grâce à leur attribut <code>name</code>, pas leur attribut <code>id</code>.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 8 : B</strong>
+                <p>La fonction <code>ceil()</code> arrondit à l'entier supérieur. La fonction <code>floor()</code> arrondit à l'entier inférieur.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 9 : undefined</strong>
+                <p>Le tableau contient 5 éléments, donc ses index vont de 0 à 4. L'index 8 n'existe pas. JavaScript affiche donc <code>undefined</code>.</p>
+            </div>
+
+            <div class="correction">
+                <strong>Question 10 : 10</strong>
+                <p>La boucle commence à <code>i = 43</code>. À chaque tour, <code>i</code> diminue de 3 avec <code>i=i-c</code>, puis encore de 1 avec <code>i--</code>. Donc <code>i</code> diminue de 4 à chaque itération.</p>
+                <p>Les valeurs testées sont : 43, 39, 35, 31, 27, 23, 19, 15, 11, 7. Cela fait 10 itérations.</p>
+            </div>
+        </section>
+
+        <footer>
+            Quiz interactif HTML, CSS, JavaScript, DOM et PHP
+        </footer>
+    </div>
+
+    <script>
+        function corrigerQuiz() {
+            const bonnesReponses = {
+                q1: "B",
+                q2: "C",
+                q3: "D",
+                q4: "B",
+                q5: "B",
+                q6: "C",
+                q7: "C",
+                q8: "B"
+            };
+
+            let score = 0;
+            const total = 10;
+
+            for (let question in bonnesReponses) {
+                const reponseSelectionnee = document.querySelector(`input[name="${question}"]:checked`);
+                const labels = document.querySelectorAll(`input[name="${question}"]`);
+
+                labels.forEach(input => {
+                    input.parentElement.classList.remove("correct", "incorrect");
+
+                    if (input.value === bonnesReponses[question]) {
+                        input.parentElement.classList.add("correct");
+                    }
+                });
+
+                if (reponseSelectionnee) {
+                    if (reponseSelectionnee.value === bonnesReponses[question]) {
+                        score++;
+                    } else {
+                        reponseSelectionnee.parentElement.classList.add("incorrect");
+                    }
+                }
+            }
+
+            const q9 = document.querySelector('input[name="q9"]');
+            const q10 = document.querySelector('input[name="q10"]');
+
+            q9.classList.remove("correct", "incorrect");
+            q10.classList.remove("correct", "incorrect");
+
+            if (q9.value.trim().toLowerCase() === "undefined") {
+                score++;
+                q9.classList.add("correct");
+            } else {
+                q9.classList.add("incorrect");
+            }
+
+            if (q10.value.trim() === "10") {
+                score++;
+                q10.classList.add("correct");
+            } else {
+                q10.classList.add("incorrect");
+            }
+
+            const resultat = document.getElementById("resultat");
+            const scoreDiv = document.getElementById("score");
+
+            let message = "";
+
+            if (score === 10) {
+                message = "Excellent travail !";
+            } else if (score >= 7) {
+                message = "Bon résultat, continue comme ça.";
+            } else if (score >= 5) {
+                message = "Résultat moyen, relis bien les corrections.";
+            } else {
+                message = "Il faut revoir les bases, mais le corrigé va t'aider.";
+            }
+
+            scoreDiv.innerHTML = `Votre score : ${score} / ${total}<br>${message}`;
+            resultat.style.display = "block";
+
+            resultat.scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
+
+</body>
+</html>
