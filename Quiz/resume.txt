@@ -1,0 +1,18 @@
+*       universel
+.       classe
+#       identifiant / id
+[]      attribut
+>       enfant direct
+espace  enfent quelconque
++       frère adjacent
+~       frère général
+:       pseudo-classe
+::      pseudo-élément
+,       groupement
+=       égal
+^=      commence par
+$=      finit par
+*=      contient
+~=      contient le mot
+|=      préfixe/langue
+-       tiret, séparateur dans les noms
